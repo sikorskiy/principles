@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyString
+  why_answer: MyString
+  user_day: one
+
+two:
+  body: MyString
+  why_answer: MyString
+  user_day: two
