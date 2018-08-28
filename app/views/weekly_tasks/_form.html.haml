@@ -1,0 +1,11 @@
+= form_for @weekly_task do |f|
+  .form-group
+    %label Week
+    = select_tag :week_id, options_for_select(Week.all.order(:start).collect{|w| ['From '+w.start.to_s + ' to '+ w.finish.to_s, w.id]}), class: 'form-control'
+  .form-group
+    %label Task name
+    = f.text_field :name, :placeholder => "Enter task name", class: 'form-control'
+  .form-group
+    %label Task description
+    = f.text_area :description, placeholder: 'Enter task description', class: 'form-control'
+  = f.submit 'Submit', class: 'btn btn-primary'

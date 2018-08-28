@@ -1,0 +1,9 @@
+.row
+  .col-sm-10.col-offset-1
+    %h5
+      = daily_task.name
+.row
+  .col-sm-1
+    = check_box_tag 'daily_task_ids[]', daily_task.id, daily_task.done
+  .col-sm-11
+    = simple_format daily_task.description
