@@ -1,0 +1,10 @@
+%div{id: "note_daily_task_#{daily_task.id}"}
+  .row
+    .col-sm-112
+      %h6
+        = daily_task.name
+        %small
+          = link_to '(explain)', daily_task_notes_path(id: daily_task.id), remote: true, class: 'explain_links'
+  .row
+    .col-sm-12
+      = simple_format daily_task.description

@@ -1,0 +1,9 @@
+= form_for @rule do |f|
+  .form-group
+    = f.text_field :name, :placeholder => "What did you learn today?", class: 'form-control'
+  .form-group
+    = f.text_area :body, placeholder: 'Why is it so?', class: 'form-control'
+  .form-group
+    = f.text_area :rule_text, placeholder: 'What will you do in other way next time?', class: 'form-control'
+  = submit_tag 'One more lesson', name: 'one_more', class: 'btn btn-sm btn-outline-primary'
+  = submit_tag 'Save lesson', name: 'finish', class: 'btn btn-sm btn-outline-primary'

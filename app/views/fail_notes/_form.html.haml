@@ -1,0 +1,7 @@
+= form_for @fail_note do |f|
+  .form-group
+    = f.text_field :body, :placeholder => "What was your today fail?", class: 'form-control'
+  .form-group
+    = f.text_area :why_answer, placeholder: 'Why did you fail?', class: 'form-control'
+  = submit_tag 'One more note', name: 'one_more', class: 'btn btn-sm btn-outline-primary'
+  = submit_tag 'Save note', name: 'finish', class: 'btn btn-sm btn-outline-primary'

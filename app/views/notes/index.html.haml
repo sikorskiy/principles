@@ -1,2 +1,39 @@
-%h1 Notes#index
-%p Find me in app/views/notes/index.html.haml
+%h5.text-center Save this day. Make it profitable for your future life
+
+#incomplete_tasks_for_comments
+  %h6.text-right
+    %strong Date:
+    = Date.today
+  = render partial: 'notes/daily_task', collection: @incomplete_daily_tasks
+
+.card.border-success
+  .card-header
+    %ul.nav-tabs.nav.card-header-tabs
+      %li.nav-item
+        = link_to 'Success', '#', class: 'nav-link active'
+      %li.nav-item
+        = link_to 'Fails', '#', class: 'nav-link'
+      %li.nav-item
+        = link_to 'Rules', '#', class: 'nav-link'
+  .list-group.list-group-flush
+    = render @success_notes
+  .card-body
+    = link_to 'New success note', new_success_note_path, class: 'card-link'
+
+%br
+
+.card.border-danger
+  %h5.card-header Fail notes for today
+  .list-group.list-group-flush
+    = render @fail_notes
+  .card-body
+    = link_to 'New fail note', new_fail_note_path, class: 'card-link'
+
+%br
+
+.card.border-dark
+  %h5.card-header My today lessons
+  .list-group.list-group-flush
+    = render @rules
+  .card-body
+    = link_to 'New lesson', new_rule_path, class: 'card-link'

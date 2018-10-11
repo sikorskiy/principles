@@ -5,20 +5,37 @@ class DailyTasksController < ApplicationController
 
   def create
     @daily_task = DailyTask.new(daily_task_params)
-    day_id = Day.find_or_create_by(day: Day.today)
-    @daily_task.user_day = UserDay.find_or_create_by(day_id: day_id, user_id: current_user.id)
+    @daily_task.user= current_user
+    @daily_task.day = Date.today
     @daily_task.save
-    redirect_to daily_tasks_path
+    respond_to do |format|
+      format.html { redirect_to daily_tasks_path }
+      format.js
+    end
+
   end
 
   def index
-    @daily_tasks = DailyTask.all
+    @complete_daily_tasks = DailyTask.all.where(day: Date.today, user: current_user, done: true)
+    @incomplete_daily_tasks = DailyTask.all.where(day: Date.today, user: current_user, done: [0, nil])
   end
 
-  def complete
+  def update
     #todo
-    DailyTask.where('id in (?)', params[:daily_task_ids]).update_all(done: true)
-    redirect_to daily_tasks_path
+    @daily_task = DailyTask.find(params[:id])
+    @daily_task.update_attribute(:done, params[:daily_task][:done])
+    respond_to do |format|
+      format.html { redirect_to daily_tasks_path }
+      format.js
+    end
+  end
+
+  def destroy
+    @daily_task = DailyTask.destroy(params[:id])
+    respond_to do |format|
+      format.html { redirect_to daily_tasks_path }
+      format.js
+    end
   end
 
   private

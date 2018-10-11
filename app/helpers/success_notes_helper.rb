@@ -1,0 +1,2 @@
+module SuccessNotesHelper
+end

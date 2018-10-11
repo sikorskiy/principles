@@ -1,4 +1,9 @@
-%h4.text-center All daily tasks
-= form_tag complete_daily_tasks_path, method: :put do
-  = render @daily_tasks
-  = submit_tag 'Complete tasks', class: 'btn btn-primary btn-sm'
+%h5.text-right=Date.today
+= link_to 'New task', new_daily_task_path, id: 'new_link', remote: true
+%h5.text-center Uncompleted daily tasks
+#incomplete_tasks
+  = render @incomplete_daily_tasks
+
+%h5.text-center Completed daily tasks
+#complete_tasks
+  = render @complete_daily_tasks

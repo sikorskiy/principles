@@ -1,0 +1,7 @@
+= form_for @daily_task, :url => url_for(:controller => 'notes', :action => 'update_daily_task', params: {id: @daily_task.id}), method: :put, remote: true do |f|
+  .form-group
+    = f.text_field :name, :placeholder => "Enter task name", class: 'form-control', readonly: true
+  .form-group
+    = f.text_area :result_comment, placeholder: 'Enter the reasons', class: 'form-control'
+
+  = f.submit 'Explain', class: 'btn btn-sm btn-outline-primary'

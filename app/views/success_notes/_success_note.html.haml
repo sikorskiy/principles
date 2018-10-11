@@ -1,0 +1,8 @@
+.list-group-item
+  %h6= success_note.body
+  %small= simple_format success_note.why_answer
+  .text-right
+    = link_to 'Edit', edit_success_note_path(success_note), class: 'small'
+    = link_to 'Delete', success_note_path(success_note), method: :delete, class: 'small'
+
+

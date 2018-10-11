@@ -1,2 +1,12 @@
 %h3 Create new daily task
-= render 'daily_tasks/form'
+= form_for @daily_task do |f|
+  .form-group
+    %small
+      %strong Date:
+      = Date.today
+  .form-group
+    = f.text_field :name, :placeholder => "Enter task name", class: 'form-control'
+  .form-group
+    = f.text_area :description, placeholder: 'Enter task description', class: 'form-control'
+
+  = f.submit 'Submit', class: 'btn btn-primary'

@@ -11,6 +11,13 @@
 // about supported directives.
 //
 //= require jquery3
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 
+$(function () {
+    $('.edit_daily_task input[type=checkbox]').click(function () {
+        $(this).parent('form').submit();
+    });
+
+});

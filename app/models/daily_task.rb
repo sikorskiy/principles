@@ -1,3 +1,3 @@
 class DailyTask < ApplicationRecord
-  belongs_to :user_day
+  belongs_to :user
 end
