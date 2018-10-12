@@ -4,19 +4,23 @@
   .card-header
     %ul.nav-tabs.nav.card-header-tabs
       %li.nav-item
-        = link_to 'Undone', '#undone', 'data-toggle': 'tab', class: 'nav-link'
+        = link_to 'Undone', '#undone', 'data-toggle': 'tab', class: 'nav-link active'
       %li.nav-item
-        = link_to 'Success', '#success', 'data-toggle': 'tab', class: 'nav-link active'
+        = link_to 'Success', '#success', 'data-toggle': 'tab', class: 'nav-link'
       %li.nav-item
         = link_to 'Fails', '#fails', 'data-toggle': 'tab', class: 'nav-link'
       %li.nav-item
         = link_to 'Rules', '#rules', 'data-toggle': 'tab', class: 'nav-link'
 
   .tab-content
-    #undone.tab-pane.fade
+    #undone.tab-pane.active
       .list-group.list-group-flush
-        = render partial: 'layouts/incomplete_task', collection: @incomplete_daily_tasks, as: :daily_task
-    #success.tab-pane.active
+        - if @incomplete_daily_tasks.count > 0
+          = render partial: 'layouts/incomplete_task', collection: @incomplete_daily_tasks, as: :daily_task
+        - else
+          No unfinished tasks. Congrats!
+      
+    #success.tab-pane.fade
       .list-group.list-group-flush
         = render @success_notes
       .card-body
