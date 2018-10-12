@@ -10,7 +10,10 @@
       %li.nav-item
         = link_to 'Daily tasks', daily_tasks_path, class: 'nav-link'
       %li.nav-item
-        = link_to 'Save the day', notes_path, class: 'nav-link'
+        - if is_day_saved?
+          = link_to 'Day is saved', notes_path, class: 'nav-link'
+        - else
+          = link_to 'Save the day', notes_path, class: 'nav-link text-danger'
     %ul.navbar-nav.ml-auto
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

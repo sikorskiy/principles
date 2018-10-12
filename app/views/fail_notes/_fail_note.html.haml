@@ -1,7 +1,12 @@
 .list-group-item
-  %h6= fail_note.body
-  %small= simple_format fail_note.why_answer
-  .text-right
-    = link_to 'Edit', edit_fail_note_path(fail_note), class: 'small'
-    = link_to 'Delete', fail_note_path(fail_note), method: :delete, class: 'small'
+  .row
+    .col-md-10
+      %h6= fail_note.body
+    .col-md-2.text-right
+      = link_to 'Edit', edit_fail_note_path(fail_note), class: 'small'
+      = link_to 'Delete', fail_note_path(fail_note), method: :delete, class: 'small'
+  .row
+    .col-md-12
+      %small= simple_format fail_note.why_answer
+
 

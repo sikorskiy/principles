@@ -1,9 +1,15 @@
 .list-group-item
-  %h6= rule.name
-  %small= simple_format rule.body
-  %strong The rule is:
-  = simple_format rule.rule_text
-  .text-right
-    = link_to 'Edit', edit_rule_path(rule), class: 'small'
-    = link_to 'Delete', rule_path(rule), method: :delete, class: 'small'
+  .row
+    .col-md-10
+      %h6= rule.name
+    .col-md-2.text-right
+      = link_to 'Edit', edit_rule_path(rule), class: 'small'
+      = link_to 'Delete', rule_path(rule), method: :delete, class: 'small'
+  .row
+    .col-md-12
+      %small= simple_format rule.body
+      %strong The rule is:
+      = simple_format rule.rule_text
+
+
 

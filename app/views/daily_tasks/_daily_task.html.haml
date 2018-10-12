@@ -1,10 +1,10 @@
 %div{id: "daily_task_#{daily_task.id}"}
   .row
-    .col-sm-10
-      %h6
+    .col-sm-12
+      %strong
         = daily_task.name
-        %small
-          = link_to '(remove)', daily_task, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+      %small
+        = link_to '(remove)', daily_task, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
   .row
     .col-sm-1
       = form_for daily_task, remote: true do |f|
