@@ -1,11 +1,12 @@
 class SuccessNotesController < ApplicationController
   def new
     @success_note = SuccessNote.new
+
   end
 
   def create
     @success_note = SuccessNote.new(body: params[:success_note][:body], why_answer: params[:success_note][:why_answer])
-    @success_note.day = Date.today
+    @success_note.day = session[:day] || Date.today
     @success_note.user = current_user
     @success_note.save
     if params[:finish]

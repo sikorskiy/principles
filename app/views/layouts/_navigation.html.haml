@@ -14,7 +14,15 @@
           = link_to 'Day is saved', notes_path, class: 'nav-link'
         - else
           = link_to 'Save the day', notes_path, class: 'nav-link text-danger'
+
+
     %ul.navbar-nav.ml-auto
+      %li.nav-item.dropdown
+        %a#saveDayDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          = session[:day] || Date.today
+        .dropdown-menu{ "aria-labelledby" => "saveDayDropdown" }
+          = link_to 'Today', '#', class: 'dropdown-item', onclick: 'set_date(0)'
+          = link_to 'Yesterday', '#', class: 'dropdown-item', onclick: 'set_date(-1)'
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           = user_signed_in? ? current_user.name || current_user.email : 'Log in'
@@ -28,3 +36,13 @@
           .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
             = link_to 'Sign up', new_user_registration_path, class: 'dropdown-item'
             = link_to 'Log in', new_user_session_path, class: 'dropdown-item'
+
+:javascript
+  function set_date(x) {
+    $.post('/ajax/date.json',
+      {date: x},
+      function(date) {
+        $('#saveDayDropdown').text(date.result)
+      });
+
+  }

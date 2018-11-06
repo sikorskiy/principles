@@ -4,7 +4,7 @@ class RulesController < ApplicationController
   end
 
   def create
-    @rule = Rule.create(body: params[:rule][:body], name: params[:rule][:name], rule_text: params[:rule][:rule_text], day: Date.today, user: current_user)
+    @rule = Rule.create(body: params[:rule][:body], name: params[:rule][:name], rule_text: params[:rule][:rule_text], day: session[:day] || Date.today, user: current_user)
     if @rule.errors.empty?
       if params[:finish]
         redirect_to notes_path

@@ -19,5 +19,4 @@ $(function () {
     $('.edit_daily_task input[type=checkbox]').click(function () {
         $(this).parent('form').submit();
     });
-
 });

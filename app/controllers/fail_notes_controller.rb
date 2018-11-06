@@ -5,7 +5,7 @@ class FailNotesController < ApplicationController
 
   def create
     @fail_note = FailNote.new(body: params[:fail_note][:body], why_answer: params[:fail_note][:why_answer])
-    @fail_note.day = Date.today
+    @fail_note.day = session[:day] || Date.today
     @fail_note.user = current_user
     @fail_note.save
     if params[:finish]

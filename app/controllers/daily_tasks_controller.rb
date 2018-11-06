@@ -16,8 +16,9 @@ class DailyTasksController < ApplicationController
   end
 
   def index
-    @complete_daily_tasks = DailyTask.all.where(day: Date.today, user: current_user, done: true)
-    @incomplete_daily_tasks = DailyTask.all.where(day: Date.today, user: current_user, done: [0, nil])
+    @day = params[:day] || Date.today
+    @complete_daily_tasks = DailyTask.all.where(day: @day, user: current_user, done: true)
+    @incomplete_daily_tasks = DailyTask.all.where(day: @day, user: current_user, done: [0, nil])
   end
 
   def update

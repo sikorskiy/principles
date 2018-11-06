@@ -1,5 +1,4 @@
 %h5.text-center Save this day. Make it profitable for your future life
-
 .card.border-success
   .card-header
     %ul.nav-tabs.nav.card-header-tabs
@@ -19,19 +18,19 @@
           = render partial: 'layouts/incomplete_task', collection: @incomplete_daily_tasks, as: :daily_task
         - else
           No unfinished tasks. Congrats!
-      
+
     #success.tab-pane.fade
       .list-group.list-group-flush
         = render @success_notes
       .card-body
-        = link_to 'New success note', new_success_note_path, class: 'card-link'
+        = link_to 'New success note', new_success_note_path(day: @day), class: 'card-link'
     #fails.tab-pane.fade
       .list-group.list-group-flush
         = render @fail_notes
       .card-body
-        = link_to 'New fail note', new_fail_note_path, class: 'card-link'
+        = link_to 'New fail note', new_fail_note_path(day: @day), class: 'card-link'
     #rules.tab-pane.fade
       .list-group.list-group-flush
         = render @rules
       .card-body
-        = link_to 'New lesson', new_rule_path, class: 'card-link'
+        = link_to 'New lesson', new_rule_path(day: @day), class: 'card-link'
