@@ -21,8 +21,9 @@
         %a#saveDayDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           = session[:day] || Date.today
         .dropdown-menu{ "aria-labelledby" => "saveDayDropdown" }
-          = link_to 'Today', '#', class: 'dropdown-item', onclick: 'set_date(0)'
           = link_to 'Yesterday', '#', class: 'dropdown-item', onclick: 'set_date(-1)'
+          = link_to 'Today', '#', class: 'dropdown-item', onclick: 'set_date(0)'
+          = link_to 'Tomorrow', '#', class: 'dropdown-item', onclick: 'set_date(1)'
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           = user_signed_in? ? current_user.name || current_user.email : 'Log in'
