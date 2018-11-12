@@ -5,6 +5,7 @@ class NotesController < ApplicationController
     @fail_notes = FailNote.where(user: current_user, day: @day)
     @rules = Rule.where(user: current_user, day: @day)
     @incomplete_daily_tasks = DailyTask.all.where(done: [0, nil], day: @day)
+    @complete_daily_tasks = DailyTask.all.where(done: 1, day: @day)
   end
 
   def ajax_date
