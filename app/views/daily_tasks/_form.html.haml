@@ -7,5 +7,7 @@
     = f.text_field :name, :placeholder => "Enter task name", class: 'form-control'
   .form-group
     = f.text_area :description, placeholder: 'Enter task description', class: 'form-control'
+  .form-group
+    = f.select :priority, %w(low normal high), selected: 'normal', class: 'form-control'
 
   = f.submit 'Add task', class: 'btn btn-sm btn-outline-primary'

@@ -41,6 +41,6 @@ class DailyTasksController < ApplicationController
 
   private
   def daily_task_params
-    params.require(:daily_task).permit(:name, :description)
+    params.require(:daily_task).permit(:name, :description, :priority)
   end
 end

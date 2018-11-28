@@ -1,7 +1,8 @@
 %div{id: "daily_task_#{daily_task.id}"}
   .row
     .col-sm-12
-      %strong
+
+      %strong{style: ('color: red;' if daily_task.priority == 'high')}
         = daily_task.name
       %small
         = link_to '(remove)', daily_task, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
