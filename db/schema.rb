@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_28_040941) do
+ActiveRecord::Schema.define(version: 2019_01_31_055306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2018_11_28_040941) do
     t.bigint "user_id"
     t.date "day"
     t.string "priority"
+    t.bigint "goal_id"
+    t.index ["goal_id"], name: "index_daily_tasks_on_goal_id"
     t.index ["user_id"], name: "index_daily_tasks_on_user_id"
   end
 
@@ -42,6 +44,8 @@ ActiveRecord::Schema.define(version: 2018_11_28_040941) do
     t.bigint "week_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "result"
+    t.text "description"
     t.index ["week_id"], name: "index_days_on_week_id"
   end
 
@@ -53,6 +57,14 @@ ActiveRecord::Schema.define(version: 2018_11_28_040941) do
     t.date "day"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_fail_notes_on_user_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "color"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rules", force: :cascade do |t|
@@ -150,6 +162,7 @@ ActiveRecord::Schema.define(version: 2018_11_28_040941) do
   end
 
   add_foreign_key "challenge_notes", "user_days"
+  add_foreign_key "daily_tasks", "goals"
   add_foreign_key "daily_tasks", "users"
   add_foreign_key "days", "weeks"
   add_foreign_key "rules", "users"

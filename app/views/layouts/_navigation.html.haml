@@ -10,6 +10,8 @@
       %li.nav-item
         = link_to 'Daily tasks', daily_tasks_path, class: 'nav-link'
       %li.nav-item
+        = link_to 'Goals', goals_path, class: 'nav-link'
+      %li.nav-item
         - if is_day_saved?
           = link_to 'Day is saved', notes_path, class: 'nav-link'
         - else
@@ -32,7 +34,7 @@
             %a.dropdown-item{:href => "#"} Profile
             %a.dropdown-item{:href => "#"} Another action
             .dropdown-divider
-            %a.dropdown-item{:href => "#"} Log out
+            = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
         - else
           .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
             = link_to 'Sign up', new_user_registration_path, class: 'dropdown-item'

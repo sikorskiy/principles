@@ -1,4 +1,6 @@
 class DailyTasksController < ApplicationController
+  before_action :authenticate_user!, only: :new
+
   def new
     @daily_task = DailyTask.new
   end
@@ -16,6 +18,7 @@ class DailyTasksController < ApplicationController
   end
 
   def index
+    @goals = Goal.all.shuffle
     @day = session[:day] || Date.today
     @complete_daily_tasks = DailyTask.all.where(day: @day, user: current_user, done: true)
     @incomplete_daily_tasks = DailyTask.all.where(day: @day, user: current_user, done: [0, nil])
@@ -41,6 +44,6 @@ class DailyTasksController < ApplicationController
 
   private
   def daily_task_params
-    params.require(:daily_task).permit(:name, :description, :priority)
+    params.require(:daily_task).permit(:name, :description, :priority, :goal_id)
   end
 end

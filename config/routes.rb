@@ -14,10 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :weekly_tasks
-  resources :success_notes
-  resources :fail_notes
-  resources :rules
+  resources :weekly_tasks, :success_notes, :fail_notes, :rules, :goals, :days
 
   post '/ajax/date' => 'notes#ajax_date'
 

@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+
+Goal.create(color: 'grey', name: 'Random goal',
+            description: 'Something that is not connected with current ' \
+                'goals. Are you sure, that you need to do it?!')

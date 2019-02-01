@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   def index
     @day = session[:day] || Date.today
+    @day_result = Day.find_or_create_by(day: @day)
     @success_notes = SuccessNote.where(user: current_user, day: @day)
     @fail_notes = FailNote.where(user: current_user, day: @day)
     @rules = Rule.where(user: current_user, day: @day)

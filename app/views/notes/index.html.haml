@@ -3,7 +3,9 @@
   .card-header
     %ul.nav-tabs.nav.card-header-tabs
       %li.nav-item
-        = link_to 'Done', '#done', 'data-toggle': 'tab', class: 'nav-link active'
+        = link_to 'Whole day result', '#result', 'data-toggle': 'tab', class: 'nav-link active'
+      %li.nav-item
+        = link_to 'Done', '#done', 'data-toggle': 'tab', class: 'nav-link'
       %li.nav-item
         = link_to 'Undone', '#undone', 'data-toggle': 'tab', class: 'nav-link'
       %li.nav-item
@@ -14,7 +16,19 @@
         = link_to 'Rules', '#rules', 'data-toggle': 'tab', class: 'nav-link'
 
   .tab-content
-    #done.tab-pane.active
+    #result.tab-pane.active
+      .card-body
+        .flash-style
+
+        = form_for @day_result, remote: true do |f|
+          .form-group
+            = f.label 'Enter day result from 1 to 10'
+            = f.number_field :result, class: 'form-control'
+          .form-group
+            = f.label 'Enter the text explanation, if it is appropriate for today'
+            = f.text_area :description, class: 'form-control'
+          = f.submit 'Estimate', class: 'btn btn-primary'
+    #done.tab-pane.fade
       .list-group.list-group-flush
         - if @complete_daily_tasks.count > 0
           = render partial: 'layouts/incomplete_task', collection: @complete_daily_tasks, as: :daily_task

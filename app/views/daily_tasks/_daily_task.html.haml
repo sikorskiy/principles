@@ -12,4 +12,8 @@
         = f.check_box :done
     .col-sm-11
       = simple_format daily_task.description
+  .row
+    .col-sm-12
+      .task-goal-item{style: "background-color: #{daily_task.goal.color}"}
+        = daily_task.goal.name
 

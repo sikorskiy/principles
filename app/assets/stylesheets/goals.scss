@@ -1,0 +1,29 @@
+// Place all the styles related to the Goals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.goals {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 5px;
+  justify-content: center;
+
+}
+
+.goal-item {
+  border: #2E2F30 1px solid;
+  border-radius: 5px;
+  padding: 2px;
+  margin: 3px 5px;
+}
+
+.task-goal-item {
+  opacity: 0.8;
+  font-size: 12px;
+  border: #2E2F30 1px solid;
+  border-radius: 5px;
+  padding: 1px;
+  padding-right: 5px;
+  margin: 0px 5px;
+  text-align: right;
+}
